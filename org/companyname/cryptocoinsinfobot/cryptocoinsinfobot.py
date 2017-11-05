@@ -21,6 +21,7 @@ def start(message):
     user_markup = telebot.types.ReplyKeyboardMarkup(True, False)
     user_markup.row("/bitcoin", "/ethereum")
     user_markup.row("/bitconnect", "/litecoin")
+    user_markup.row("/settings")
 
     # send a message to a user with new keyboard
     bot.send_message(message.from_user.id, 'Hello, ' + message.from_user.first_name
