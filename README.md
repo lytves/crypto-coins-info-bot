@@ -1,4 +1,6 @@
-# @CryptoCoinsInfoBot
+# CryptoCoinsInfoBot
+
+[@CryptoCoinsInfoBot](https://t.me/CryptoCoinsInfoBot "@CryptoCoinsInfoBot") - enjoy it!
 
 This is a simple version of a Telegram Bot, has been used [pyTelegramBotAPI Library ](https://github.com/eternnoir/pyTelegramBotAPI "pyTelegramBotAPI Library GitHub Repository")
 
