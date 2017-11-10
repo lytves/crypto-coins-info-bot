@@ -19,8 +19,8 @@ server = Flask(__name__)
 def start(message):
     # create userkeyboard, resize = true, autohide=true
     user_markup = telebot.types.ReplyKeyboardMarkup(True, False)
-    user_markup.row("/bitcoin", "/ethereum")
-    user_markup.row("/bitconnect", "/litecoin")
+    user_markup.row("/Bitcoin", "/Ethereum")
+    user_markup.row("/BitConnect", "/Litecoin")
     user_markup.row("/settings")
 
     # send a message to a user with new keyboard
@@ -31,30 +31,37 @@ def start(message):
 
 ################################################## commands for recieve info
 ### BTC
-@bot.message_handler(commands=['bitcoin'])
+@bot.message_handler(commands=['Bitcoin'])
 def bitcoin(message):
     # BTC currency
     text = requestAPI(message, "bitcoin")
 
 ### ETH
-@bot.message_handler(commands=['ethereum'])
+@bot.message_handler(commands=['Ethereum'])
 def ethereum(message):
     # ETH currency
     text = requestAPI(message, "ethereum")
 
 ### BCC
-@bot.message_handler(commands=['bitconnect'])
+@bot.message_handler(commands=['BitConnect'])
 def bitconnect(message):
     # LTC currency
     text = requestAPI(message, "bitconnect")
 
 ### LTC
-@bot.message_handler(commands=['litecoin'])
+@bot.message_handler(commands=['Bitcoin Cash'])
 def litecoin(message):
     # LTC currency
-    text = requestAPI(message, "litecoin")
-
+    text = requestAPI(message, "bitcoin-cash")
 ################################## end of block of commands for recieve info
+
+################################################## settings
+### BTC
+@bot.message_handler(commands=['settings'])
+def settings(message):
+    # print("this url:" + url)
+    print("this url:")
+################################## end of settings  block
 
 def requestAPI(message, coin):
     url = "https://api.coinmarketcap.com/v1/ticker/" + str(coin)
