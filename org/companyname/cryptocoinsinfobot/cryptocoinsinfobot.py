@@ -20,7 +20,7 @@ def start(message):
     # create userkeyboard, resize = true, autohide=true
     user_markup = telebot.types.ReplyKeyboardMarkup(True, False)
     user_markup.row("/Bitcoin", "/Ethereum")
-    user_markup.row("/BitConnect", "/Litecoin")
+    user_markup.row("/BitConnect", "/Bitcoin-Cash")
     user_markup.row("/settings")
 
     # send a message to a user with new keyboard
@@ -49,7 +49,7 @@ def bitconnect(message):
     text = requestAPI(message, "bitconnect")
 
 ### LTC
-@bot.message_handler(commands=['Bitcoin Cash'])
+@bot.message_handler(commands=['Bitcoin-Cash'])
 def litecoin(message):
     # LTC currency
     text = requestAPI(message, "bitcoin-cash")
