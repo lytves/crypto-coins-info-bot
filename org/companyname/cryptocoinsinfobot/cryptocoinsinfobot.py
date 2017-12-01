@@ -71,7 +71,7 @@ def requestAPI(message, coin):
     price = response.json()[0]['price_usd']
     rate24h = response.json()[0]['percent_change_24h']
     rate7d = response.json()[0]['percent_change_7d']
-    text = "Current <span style='color:blue'>" + name + "</span> price - ${}".format(price)  \
+    text = "Current <strong>" + name + "</strong> price - <strong>${}".format(price) + "</strong>" \
            + "\nLast 24 hours changed for: " + rate24h + "%" \
            + "\nLast 7 days changed for: " + rate7d + "%"
     bot.send_message(message.from_user.id, text, parse_mode="HTML")
