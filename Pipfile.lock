@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "1999af410752b8f857ee4c5829fcc16087752e83e801b1f3019286959e3ce211"
+            "sha256": "dbc1bb0d9b6efc2eb75591cdaa0f5254867a828fd1366cdac45ddb752c5c15bf"
         },
         "host-environment-markers": {
             "implementation_name": "cpython",
@@ -32,10 +32,10 @@
     "default": {
         "certifi": {
             "hashes": [
-                "sha256:54a07c09c586b0e4c619f02a5e94e36619da8e2b053e20f594348c0611803704",
-                "sha256:40523d2efb60523e113b44602298f0960e900388cf3bb6043f645cf57ea9e3f5"
+                "sha256:244be0d93b71e93fc0a0a479862051414d0e00e16435707e5bf5000f92e04694",
+                "sha256:5ec74291ca1136b40f0379e1128ff80e866597e4e2c1e755739a913bbc3613c0"
             ],
-            "version": "==2017.7.27.1"
+            "version": "==2017.11.5"
         },
         "chardet": {
             "hashes": [
@@ -73,10 +73,10 @@
         },
         "jinja2": {
             "hashes": [
-                "sha256:2231bace0dfd8d2bf1e5d7e41239c06c9e0ded46e70cc1094a0aa64b0afeb054",
-                "sha256:ddaa01a212cd6d641401cb01b605f4a4d9f37bfc93043d7f760ec70fb99ff9ff"
+                "sha256:74c935a1b8bb9a3947c50a54766a969d4846290e1e788ea44c1392163723c3bd",
+                "sha256:f84be1bb0040caca4cea721fcbbbbd61f9be9464ca236387158b0feea01914a4"
             ],
-            "version": "==2.9.6"
+            "version": "==2.10"
         },
         "markupsafe": {
             "hashes": [
@@ -84,11 +84,17 @@
             ],
             "version": "==1.0"
         },
+        "newrelic": {
+            "hashes": [
+                "sha256:fc7125f3caed2b678c884468c1416ab87e7150ede0d46c738fca08d88c8bd008"
+            ],
+            "version": "==2.96.0.80"
+        },
         "pytelegrambotapi": {
             "hashes": [
-                "sha256:4a9ba025c8430df6d5208abbf3a10f4f7875d5b42c519ca62119e8cb225657a2"
+                "sha256:4f80384684bdc1ef5403bffdabfd5791f7c744ff2ced76953dd3178ebc74bf1a"
             ],
-            "version": "==3.2.1"
+            "version": "==3.4.2"
         },
         "requests": {
             "hashes": [
