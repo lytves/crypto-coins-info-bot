@@ -103,8 +103,8 @@ def requestAPI(message, coin):
         rate7demoji = emojize(":white_check_mark:", use_aliases=True)
 
     text = "Current *" + name + "* price - *${}".format(price) + "*" \
-           + "\nLast 24hours changed for: *" + rate24h + "%*" + rate24hemoji \
-           + "\nLast 7days changed for: *" + rate7d + "%*" + rate7demoji
+           + "\nLast 24hours changed for *" + rate24h + "%*" + rate24hemoji \
+           + "\nLast 7days changed for *" + rate7d + "%*" + rate7demoji
     bot.send_message(message.from_user.id, text, parse_mode="Markdown", reply_markup=user_markup)
 
 # for reply for user with its own message
