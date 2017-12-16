@@ -9,6 +9,7 @@ from emoji import emojize
 token = os.environ.get('TOKEN')
 # your heroku app URL and add path "bot" for active update
 appURL = os.environ.get('APPURL') + '/bot'
+yourAlias = os.environ.get('YOURALIAS')
 # end of read config variables
 
 bot = telebot.TeleBot(token)
@@ -19,22 +20,28 @@ server = Flask(__name__)
 user_markup = telebot.types.ReplyKeyboardMarkup(True, False)
 user_markup.row("/Bitcoin", "/Ethereum")
 user_markup.row("/BitConnect", "/BitcoinCash")
-user_markup.row("/settings")
+user_markup.row("/settings", "/feedback")
 
 # on the start command to user would send a userkeyboard
 @bot.message_handler(commands=['start'])
 def start(message):
-    # create userkeyboard, resize = true, autohide=true
-    user_markup = telebot.types.ReplyKeyboardMarkup(True, False)
-    user_markup.row("/Bitcoin", "/Ethereum")
-    user_markup.row("/BitConnect", "/BitcoinCash")
-    user_markup.row("/settings")
-
-    # send a message to a user with new keyboard
+    # send a start message
     bot.send_message(message.from_user.id, 'Hello, ' + message.from_user.first_name
                      + '. I am your Crypto Coins Info Bot! Use a keyboard for receive info about a price of a crypto coin.',
                      reply_markup=user_markup)
 
+# on the start command to user would send a userkeyboard
+@bot.message_handler(commands=['settings'])
+def settings(message):
+    # send a message to a user with new keyboard
+    bot.send_message(message.from_user.id, 'coming soon... maybe', reply_markup=user_markup)
+
+# on the start command to user would send a userkeyboard
+@bot.message_handler(commands=['feedback'])
+def feedback(message):
+    # send a message to a user with new keyboard
+    bot.send_message(message.from_user.id, 'Send your opinion about the bot to ' + yourAlias + ', please',
+                     reply_markup=user_markup)
 
 ################################################## commands for recieve info
 ### BTC
