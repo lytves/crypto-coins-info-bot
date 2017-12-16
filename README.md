@@ -14,6 +14,7 @@ Has been deployed on Heroku servers. Put the Token of you bot and the URL of you
 ```bash
 $ heroku config:set TOKEN=put_your_token_here
 $ heroku config:set APPURL=put_your_app_url_here
+$ heroku config:set YOURALIAS=put_your_telegram_alias
 ```
 
 + For show your configs vars:
