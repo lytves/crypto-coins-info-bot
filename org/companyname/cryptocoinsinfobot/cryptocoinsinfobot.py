@@ -2,6 +2,7 @@ import telebot
 import os
 import requests
 from flask import Flask, request
+from emoji import emojize
 
 # set up config variables en your heroku environment
 # your bot TOKEN
@@ -69,11 +70,28 @@ def requestAPI(message, coin):
     response = requests.get(url)
     name = response.json()[0]['name']
     price = response.json()[0]['price_usd']
+
+    # 24 hours price change with emoji
     rate24h = response.json()[0]['percent_change_24h']
+    if float(rate24h) > 20:
+        rate24hemoji = emojize(":rocket:", use_aliases=True)
+    elif float(rate24h) < 0:
+        rate24hemoji = emojize(":small_red_triangle_down:", use_aliases=True)
+    elif float(rate24h) > 0:
+        rate24hemoji = emojize(":white_check_mark:", use_aliases=True)
+
+    # 7 days price change with emoji
     rate7d = response.json()[0]['percent_change_7d']
+    if float(rate7d) > 20:
+        rate7demoji = emojize(":rocket:", use_aliases=True)
+    elif float(rate7d) < 0:
+        rate7demoji = emojize(":small_red_triangle_down:", use_aliases=True)
+    elif float(rate7d) > 0:
+        rate7demoji = emojize(":white_check_mark:", use_aliases=True)
+
     text = "Current *" + name + "* price - *${}".format(price) + "*" \
-           + "\nLast 24 hours changed for: `" + rate24h + "%`" \
-           + "\nLast 7 days changed for: `" + rate7d + "%`"
+           + "\nLast 24 hours changed for: *" + rate24h + "%*" + rate24hemoji \
+           + "\nLast 7 days changed for: *" + rate7d + "%*" + rate7demoji
     bot.send_message(message.from_user.id, text, parse_mode="Markdown")
 
 # for reply for user with its own message
@@ -95,5 +113,5 @@ def webhook():
     return "!", 200
 
 
-server.run(host="0.0.0.0", port=os.environ.get('PORT', 5000))
+server.run(host="0.0.0.0", port=int(os.environ.get('PORT', 5000)))
 server = Flask(__name__)

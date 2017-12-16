@@ -2,9 +2,9 @@
 
 [@CryptoCoinsInfoBot](https://t.me/CryptoCoinsInfoBot "@CryptoCoinsInfoBot") - enjoy it!
 
-This is a simple version of a Telegram Bot, has been used [pyTelegramBotAPI Library ](https://github.com/eternnoir/pyTelegramBotAPI "pyTelegramBotAPI Library GitHub Repository")
+This is a simple version of a Telegram Bot, has been used [pyTelegramBotAPI Library ](https://github.com/eternnoir/pyTelegramBotAPI "pyTelegramBotAPI Library GitHub Repository") with using webhook updates method for recieve the messages.  
 
-With using webhook updates method for recieve the messages.  
+For use unicode emojis has been used [Emoji Library](https://github.com/carpedm20/emoji "Emoji for Python.")
 
 ---
 
