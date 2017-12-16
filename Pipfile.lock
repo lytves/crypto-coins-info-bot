@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "dbc1bb0d9b6efc2eb75591cdaa0f5254867a828fd1366cdac45ddb752c5c15bf"
+            "sha256": "0b4c7bdbb9d7cbaf551760b4311cf8fe2e39cc35b56dcc4d7eaae571f3e46fe1"
         },
         "host-environment-markers": {
             "implementation_name": "cpython",
@@ -51,6 +51,13 @@
             ],
             "version": "==6.7"
         },
+        "emoji": {
+            "hashes": [
+                "sha256:a06410d5fec2bb81a80d215d9280779492b109bfc79f87e977a8299380802d9c",
+                "sha256:d8bc4a528b0584b755cc160d98a8e6169d4896f2a5be8a964815517ae7ab298e"
+            ],
+            "version": "==0.4.5"
+        },
         "flask": {
             "hashes": [
                 "sha256:0749df235e3ff61ac108f69ac178c9770caeaccad2509cb762ce1f65570a8856",
@@ -86,15 +93,15 @@
         },
         "newrelic": {
             "hashes": [
-                "sha256:fc7125f3caed2b678c884468c1416ab87e7150ede0d46c738fca08d88c8bd008"
+                "sha256:965214625392d41b9620c6928a6b10036bf1e2a2b797cdb6682650e95e1f616e"
             ],
-            "version": "==2.96.0.80"
+            "version": "==2.98.0.81"
         },
         "pytelegrambotapi": {
             "hashes": [
-                "sha256:4f80384684bdc1ef5403bffdabfd5791f7c744ff2ced76953dd3178ebc74bf1a"
+                "sha256:d097128ab2c6b43a0219231a4b39da46e3f2960cd8415ad0913c752e335cc4a8"
             ],
-            "version": "==3.4.2"
+            "version": "==3.5.1"
         },
         "requests": {
             "hashes": [
@@ -119,10 +126,10 @@
         },
         "werkzeug": {
             "hashes": [
-                "sha256:e8549c143af3ce6559699a01e26fa4174f4c591dbee0a499f3cd4c3781cdec3d",
-                "sha256:903a7b87b74635244548b30d30db4c8947fe64c5198f58899ddcd3a13c23bb26"
+                "sha256:f3000aa146ce8a9da8ca3e978e0e931c2a58eb56c323a5efb6b4307f7832b549",
+                "sha256:6246e5fc98a505824113fb6aca993d45ea284a2bcffdc2c65d0c538e53e4abd3"
             ],
-            "version": "==0.12.2"
+            "version": "==0.13"
         }
     },
     "develop": {}

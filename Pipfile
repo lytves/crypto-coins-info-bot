@@ -10,6 +10,7 @@ name = "pypi"
 pytelegrambotapi = "*"
 flask = "*"
 newrelic = "*"
+emoji = "*"
 
 
 [dev-packages]
