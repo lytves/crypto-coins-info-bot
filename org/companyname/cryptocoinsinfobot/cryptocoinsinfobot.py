@@ -15,6 +15,12 @@ bot = telebot.TeleBot(token)
 
 server = Flask(__name__)
 
+# create userkeyboard, resize = true, autohide=true
+user_markup = telebot.types.ReplyKeyboardMarkup(True, False)
+user_markup.row("/Bitcoin", "/Ethereum")
+user_markup.row("/BitConnect", "/BitcoinCash")
+user_markup.row("/settings")
+
 # on the start command to user would send a userkeyboard
 @bot.message_handler(commands=['start'])
 def start(message):
@@ -90,9 +96,9 @@ def requestAPI(message, coin):
         rate7demoji = emojize(":white_check_mark:", use_aliases=True)
 
     text = "Current *" + name + "* price - *${}".format(price) + "*" \
-           + "\nLast 24 hours changed for: *" + rate24h + "%*" + rate24hemoji \
-           + "\nLast 7 days changed for: *" + rate7d + "%*" + rate7demoji
-    bot.send_message(message.from_user.id, text, parse_mode="Markdown")
+           + "\nLast 24hours changed for: *" + rate24h + "%*" + rate24hemoji \
+           + "\nLast 7days changed for: *" + rate7d + "%*" + rate7demoji
+    bot.send_message(message.from_user.id, text, parse_mode="Markdown", reply_markup=user_markup)
 
 # for reply for user with its own message
 # @bot.message_handler(func=lambda message: True, content_types=['text'])
