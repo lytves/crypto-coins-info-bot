@@ -20,17 +20,17 @@ server = Flask(__name__)
 user_markup = telebot.types.ReplyKeyboardMarkup(True, False)
 user_markup.row("Bitcoin", "Ethereum")
 user_markup.row("BitConnect", "BitcoinCash")
-user_markup.row("Ripple", "➡2")
+user_markup.row("Ripple", "➡ 2")
 
 user_markup2 = telebot.types.ReplyKeyboardMarkup(True, False)
 user_markup2.row("Litecoin", "Cardano")
 user_markup2.row("IOTA", "Dash")
-user_markup2.row("1⬅", "➡3")
+user_markup2.row("1 ⬅", "➡ 3")
 
 user_markup3 = telebot.types.ReplyKeyboardMarkup(True, False)
 user_markup3.row("NEM", "Monero")
 user_markup3.row("NEO", "feedback")
-user_markup3.row("2⬅", "settings")
+user_markup3.row("2 ⬅", "settings")
 
 # send a start message
 @bot.message_handler(func=lambda message: message.text == 'start')
@@ -41,19 +41,19 @@ def start(message):
 
 
 # more coins list
-@bot.message_handler(func=lambda message: message.text == '➡3')
+@bot.message_handler(func=lambda message: message.text == '➡ 3')
 def other_coins(message):
     bot.send_message(message.from_user.id, 'page 3', reply_markup=user_markup3)
 
 
 # more coins list
-@bot.message_handler(func=lambda message: message.text == '➡2' or message.text == '2⬅')
+@bot.message_handler(func=lambda message: message.text == '➡ 2' or message.text == '2 ⬅')
 def other_coins(message):
     bot.send_message(message.from_user.id, 'page 2', reply_markup=user_markup2)
 
 
 # main coins list
-@bot.message_handler(func=lambda message: message.text == '1⬅')
+@bot.message_handler(func=lambda message: message.text == '1 ⬅')
 def more_coins(message):
     bot.send_message(message.from_user.id, 'page 1', reply_markup=user_markup)
 
