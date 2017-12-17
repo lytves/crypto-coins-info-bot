@@ -20,12 +20,12 @@ server = Flask(__name__)
 user_markup = telebot.types.ReplyKeyboardMarkup(True, False)
 user_markup.row("/Bitcoin", "/Ethereum")
 user_markup.row("/BitConnect", "/BitcoinCash")
-user_markup.row("/Ripple", "/👉")
+user_markup.row("/Ripple", "/➡")
 
 user_markup2 = telebot.types.ReplyKeyboardMarkup(True, False)
 user_markup2.row("/Litecoin", "/Cardano")
 user_markup2.row("/IOTA", "/feedback")
-user_markup2.row("/👈", "/settings")
+user_markup2.row("/⬅", "/settings")
 
 # send a start message
 @bot.message_handler(commands=['start'])
@@ -35,12 +35,12 @@ def start(message):
                      reply_markup=user_markup)
 
 # more coins list
-@bot.message_handler(commands=['👉'])
+@bot.message_handler(commands=['➡'])
 def other_coins(message):
     bot.send_message(message.from_user.id, 'Other Coins', reply_markup=user_markup2)
 
 # more coins list
-@bot.message_handler(commands=['👈'])
+@bot.message_handler(commands=['⬅'])
 def more_coins(message):
     bot.send_message(message.from_user.id, 'Main Coins', reply_markup=user_markup)
 
@@ -113,24 +113,24 @@ def requestAPI(message, coin, menuPage):
 
     # 24 hours price change with emoji
     rate24h = response.json()[0]['percent_change_24h']
-    if float(rate24h) >= 20:
+    if float(rate24h) >= 20.0:
         rate24hemoji = emojize(":rocket:", use_aliases=True)
-    elif float(rate24h) <= -20:
+    elif float(rate24h) <= -20.0:
         rate24hemoji = emojize(":sos:", use_aliases=True)
-    elif float(rate24h) < 0:
+    elif float(rate24h) < 0.0:
         rate24hemoji = emojize(":small_red_triangle_down:", use_aliases=True)
-    elif float(rate24h) > 0:
+    elif float(rate24h) > 0.0:
         rate24hemoji = emojize(":white_check_mark:", use_aliases=True)
 
     # 7 days price change with emoji
     rate7d = response.json()[0]['percent_change_7d']
-    if float(rate7d) > 20:
+    if float(rate7d) > 20.0:
         rate7demoji = emojize(":rocket:", use_aliases=True)
-    elif float(rate24h) <= -20:
+    elif float(rate7d) <= -20.0:
         rate7demoji = emojize(":sos:", use_aliases=True)
-    elif float(rate7d) < 0:
+    elif float(rate7d) < 0.0:
         rate7demoji = emojize(":small_red_triangle_down:", use_aliases=True)
-    elif float(rate7d) > 0:
+    elif float(rate7d) > 0.0:
         rate7demoji = emojize(":white_check_mark:", use_aliases=True)
 
     text = "Current *" + name + "* price - *${}".format(price) + "*" \
