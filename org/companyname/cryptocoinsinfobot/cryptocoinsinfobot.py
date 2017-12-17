@@ -113,8 +113,10 @@ def requestAPI(message, coin, menuPage):
 
     # 24 hours price change with emoji
     rate24h = response.json()[0]['percent_change_24h']
-    if float(rate24h) > 20:
+    if float(rate24h) >= 20:
         rate24hemoji = emojize(":rocket:", use_aliases=True)
+    elif float(rate24h) <= -20:
+        rate24hemoji = emojize(":sos:", use_aliases=True)
     elif float(rate24h) < 0:
         rate24hemoji = emojize(":small_red_triangle_down:", use_aliases=True)
     elif float(rate24h) > 0:
@@ -124,6 +126,8 @@ def requestAPI(message, coin, menuPage):
     rate7d = response.json()[0]['percent_change_7d']
     if float(rate7d) > 20:
         rate7demoji = emojize(":rocket:", use_aliases=True)
+    elif float(rate24h) <= -20:
+        rate7demoji = emojize(":sos:", use_aliases=True)
     elif float(rate7d) < 0:
         rate7demoji = emojize(":small_red_triangle_down:", use_aliases=True)
     elif float(rate7d) > 0:
