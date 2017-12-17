@@ -71,7 +71,7 @@ def litecoin(message):
 ### text messages handler for send user keyboard for all users
 @bot.message_handler(content_types=["text"])
 def settings(message):
-    bot.send_message(message.from_user.id, 'Hello, ' + message.from_user.first_name, reply_markup=user_markup)
+    bot.send_message(message.from_user.id, 'Hello, ' + message.from_user.first_name + '.', reply_markup=user_markup)
 ################################## end of settings  block
 
 def requestAPI(message, coin):
