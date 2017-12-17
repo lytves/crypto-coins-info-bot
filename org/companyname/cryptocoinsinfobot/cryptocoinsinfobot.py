@@ -22,21 +22,20 @@ user_markup.row("/Bitcoin", "/Ethereum")
 user_markup.row("/BitConnect", "/BitcoinCash")
 user_markup.row("/settings", "/feedback")
 
-# on the start command to user would send a userkeyboard
+# send a start message
 @bot.message_handler(commands=['start'])
 def start(message):
-    # send a start message
     bot.send_message(message.from_user.id, 'Hello, ' + message.from_user.first_name
                      + '. I am your Crypto Coins Info Bot! Use a keyboard for receive info about a price of a crypto coin.',
                      reply_markup=user_markup)
 
-# on the start command to user would send a userkeyboard
+# settings command handler
 @bot.message_handler(commands=['settings'])
 def settings(message):
     # send a message to a user with new keyboard
     bot.send_message(message.from_user.id, 'coming soon... maybe', reply_markup=user_markup)
 
-# on the start command to user would send a userkeyboard
+# feedback command handler
 @bot.message_handler(commands=['feedback'])
 def feedback(message):
     # send a message to a user with new keyboard
@@ -69,12 +68,10 @@ def litecoin(message):
     text = requestAPI(message, "bitcoin-cash")
 ################################## end of block of commands for recieve info
 
-################################################## settings
-### BTC
-@bot.message_handler(commands=['settings'])
+### text messages handler for send user keyboard for all users
+@bot.message_handler(content_types=["text"])
 def settings(message):
-    # print("this url:" + url)
-    print("this url:")
+    bot.send_message(message.from_user.id, 'Hello, ' + message.from_user.first_name, reply_markup=user_markup)
 ################################## end of settings  block
 
 def requestAPI(message, coin):
