@@ -2,7 +2,7 @@ import telebot
 import os
 import requests
 from flask import Flask, request
-from emoji import emojize
+from org.companyname.cryptocoinsinfobot.requestAPI import requestAPI
 
 # set up config variables en your heroku environment
 # your bot TOKEN
@@ -18,135 +18,139 @@ server = Flask(__name__)
 
 # create userkeyboard, resize = true, autohide=false
 user_markup = telebot.types.ReplyKeyboardMarkup(True, False)
-user_markup.row("/Bitcoin", "/Ethereum")
-user_markup.row("/BitConnect", "/BitcoinCash")
-user_markup.row("/Ripple", "/➡")
+user_markup.row("Bitcoin", "Ethereum")
+user_markup.row("BitConnect", "BitcoinCash")
+user_markup.row("Ripple", "➡2")
 
 user_markup2 = telebot.types.ReplyKeyboardMarkup(True, False)
-user_markup2.row("/Litecoin", "/Cardano")
-user_markup2.row("/IOTA", "/feedback")
-user_markup2.row("/⬅", "/settings")
+user_markup2.row("Litecoin", "Cardano")
+user_markup2.row("IOTA", "Dash")
+user_markup2.row("1⬅", "➡3")
+
+user_markup3 = telebot.types.ReplyKeyboardMarkup(True, False)
+user_markup3.row("NEM", "Monero")
+user_markup3.row("NEO", "feedback")
+user_markup3.row("2⬅", "settings")
 
 # send a start message
-@bot.message_handler(commands=['start'])
+@bot.message_handler(func=lambda message: message.text == 'start')
 def start(message):
     bot.send_message(message.from_user.id, 'Hello, ' + message.from_user.first_name
                      + '. I am your Crypto Coins Info Bot! Use a keyboard for receive info about a price of a crypto coin.',
                      reply_markup=user_markup)
 
-# more coins list
-@bot.message_handler(commands=['➡'])
-def other_coins(message):
-    bot.send_message(message.from_user.id, 'Other Coins', reply_markup=user_markup2)
 
 # more coins list
-@bot.message_handler(commands=['⬅'])
+@bot.message_handler(func=lambda message: message.text == '➡3')
+def other_coins(message):
+    bot.send_message(message.from_user.id, 'page 3', reply_markup=user_markup3)
+
+
+# more coins list
+@bot.message_handler(func=lambda message: message.text == '➡2' or message.text == '2⬅')
+def other_coins(message):
+    bot.send_message(message.from_user.id, 'page 2', reply_markup=user_markup2)
+
+
+# main coins list
+@bot.message_handler(func=lambda message: message.text == '1⬅')
 def more_coins(message):
-    bot.send_message(message.from_user.id, 'Main Coins', reply_markup=user_markup)
+    bot.send_message(message.from_user.id, 'page 1', reply_markup=user_markup)
 
 # settings command handler
-@bot.message_handler(commands=['settings'])
+@bot.message_handler(func=lambda message: message.text == 'settings')
 def settings(message):
     # send a message to a user with new keyboard
-    bot.send_message(message.from_user.id, 'coming soon... maybe', reply_markup=user_markup2)
+    bot.send_message(message.from_user.id, 'coming soon... maybe', reply_markup=user_markup3)
+
 
 # feedback command handler
-@bot.message_handler(commands=['feedback'])
+@bot.message_handler(func=lambda message: message.text == 'feedback')
 def feedback(message):
     # send a message to a user with new keyboard
     bot.send_message(message.from_user.id, 'Send your opinion about the bot to ' + yourAlias + ', please',
-                     reply_markup=user_markup2)
+                     reply_markup=user_markup3)
 
-################################################## commands for recieve info
+
+################################################## handlers for the coins text name
 ### BTC
-@bot.message_handler(commands=['Bitcoin'])
+@bot.message_handler(func=lambda message: message.text == 'Bitcoin')
 def bitcoin(message):
-    text = requestAPI(message, "bitcoin", 1)
+    text = requestAPI(message, "bitcoin", user_markup, bot)
+
 
 ### ETH
-@bot.message_handler(commands=['Ethereum'])
+@bot.message_handler(func=lambda message: message.text == 'Ethereum')
 def ethereum(message):
-    text = requestAPI(message, "ethereum", 1)
+    text = requestAPI(message, "ethereum", user_markup, bot)
+
 
 ### BCC
-@bot.message_handler(commands=['BitConnect'])
+@bot.message_handler(func=lambda message: message.text == 'BitConnect')
 def bitconnect(message):
-    text = requestAPI(message, "bitconnect", 1)
+    text = requestAPI(message, "bitconnect", user_markup, bot)
 
 ### BCH
-@bot.message_handler(commands=['BitcoinCash'])
+@bot.message_handler(func=lambda message: message.text == 'BitcoinCash')
 def bitcoincash(message):
-    text = requestAPI(message, "bitcoin-cash", 1)
+    text = requestAPI(message, "bitcoin-cash", user_markup, bot)
+
 
 ### XRP
-@bot.message_handler(commands=['Ripple'])
+@bot.message_handler(func=lambda message: message.text == 'Ripple')
 def ripple(message):
-    text = requestAPI(message, "ripple", 1)
+    text = requestAPI(message, "ripple", user_markup, bot)
+
 
 ### LTC
-@bot.message_handler(commands=['Litecoin'])
-def ripple(message):
-    text = requestAPI(message, "litecoin", 2)
+@bot.message_handler(func=lambda message: message.text == 'Litecoin')
+def litecoin(message):
+    text = requestAPI(message, "litecoin", user_markup2, bot)
+
 
 ### ADA
-@bot.message_handler(commands=['Cardano'])
-def ripple(message):
-    text = requestAPI(message, "cardano", 2)
+@bot.message_handler(func=lambda message: message.text == 'Cardano')
+def cardano(message):
+    text = requestAPI(message, "cardano", user_markup2, bot)
+
 
 ### MIOTA
-@bot.message_handler(commands=['IOTA'])
-def ripple(message):
-    text = requestAPI(message, "iota", 2)
-################################## end of block of commands for recieve info
+@bot.message_handler(func=lambda message: message.text == 'IOTA')
+def iota(message):
+    text = requestAPI(message, "iota", user_markup2, bot)
+
+
+### Dash
+@bot.message_handler(func=lambda message: message.text == 'Dash')
+def dash(message):
+    text = requestAPI(message, "dash", user_markup2, bot)
+
+
+### NEM
+@bot.message_handler(func=lambda message: message.text == 'NEM')
+def nem(message):
+    text = requestAPI(message, "nem", user_markup3, bot)
+
+
+### Monero
+@bot.message_handler(func=lambda message: message.text == 'Monero')
+def monero(message):
+    text = requestAPI(message, "monero", user_markup3, bot)
+
+
+### NEO
+@bot.message_handler(func=lambda message: message.text == 'NEO')
+def neo(message):
+    text = requestAPI(message, "neo", user_markup3, bot)
+################################## end of handlers for the coins text name
+
 
 ### text messages handler for send user keyboard for all users
-@bot.message_handler(content_types=["text"])
+@bot.message_handler(func=lambda message: True)
 def settings(message):
     bot.send_message(message.from_user.id, 'Hello, ' + message.from_user.first_name + '.', reply_markup=user_markup)
 ################################## end of settings  block
 
-def requestAPI(message, coin, menuPage):
-    url = "https://api.coinmarketcap.com/v1/ticker/" + str(coin)
-    response = requests.get(url)
-    name = response.json()[0]['name']
-    price = response.json()[0]['price_usd']
-
-    # 24 hours price change with emoji
-    rate24h = response.json()[0]['percent_change_24h']
-    if float(rate24h) >= 20.0:
-        rate24hemoji = emojize(":rocket:", use_aliases=True)
-    elif float(rate24h) <= -20.0:
-        rate24hemoji = emojize(":sos:", use_aliases=True)
-    elif float(rate24h) < 0.0:
-        rate24hemoji = emojize(":small_red_triangle_down:", use_aliases=True)
-    elif float(rate24h) > 0.0:
-        rate24hemoji = emojize(":white_check_mark:", use_aliases=True)
-
-    # 7 days price change with emoji
-    rate7d = response.json()[0]['percent_change_7d']
-    if float(rate7d) > 20.0:
-        rate7demoji = emojize(":rocket:", use_aliases=True)
-    elif float(rate7d) <= -20.0:
-        rate7demoji = emojize(":sos:", use_aliases=True)
-    elif float(rate7d) < 0.0:
-        rate7demoji = emojize(":small_red_triangle_down:", use_aliases=True)
-    elif float(rate7d) > 0.0:
-        rate7demoji = emojize(":white_check_mark:", use_aliases=True)
-
-    text = "Current *" + name + "* price - *${}".format(price) + "*" \
-           + "\nLast 24hours changed for *" + rate24h + "%*" + rate24hemoji \
-           + "\nLast 7days changed for *" + rate7d + "%*" + rate7demoji
-
-    if menuPage == 2:
-        bot.send_message(message.from_user.id, text, parse_mode="Markdown", reply_markup=user_markup2)
-    else:
-        bot.send_message(message.from_user.id, text, parse_mode="Markdown", reply_markup=user_markup)
-
-# for reply for user with its own message
-# @bot.message_handler(func=lambda message: True, content_types=['text'])
-#def echo_message(message):
-#    bot.reply_to(message, message.text)
-# end
 
 @server.route("/bot", methods=['POST'])
 def getMessage():
