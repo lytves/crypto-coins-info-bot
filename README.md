@@ -21,3 +21,7 @@ $ heroku config:set YOURALIAS=put_your_telegram_alias
 ```bash
 $ heroku config
 ```
+---
+
+Screenshot of the work bot:
+![CryptoCoinsInfoBot](CryptoCoinsInfoBot.jpg "CryptoCoinsInfoBot")
