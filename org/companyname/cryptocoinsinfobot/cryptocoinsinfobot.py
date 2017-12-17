@@ -20,12 +20,12 @@ server = Flask(__name__)
 user_markup = telebot.types.ReplyKeyboardMarkup(True, False)
 user_markup.row("/Bitcoin", "/Ethereum")
 user_markup.row("/BitConnect", "/BitcoinCash")
-user_markup.row("/Ripple", "/otherCoins")
+user_markup.row("/Ripple", "/👉")
 
 user_markup2 = telebot.types.ReplyKeyboardMarkup(True, False)
 user_markup2.row("/Litecoin", "/Cardano")
 user_markup2.row("/IOTA", "/feedback")
-user_markup2.row("/mainCoins", "/settings")
+user_markup2.row("/👈", "/settings")
 
 # send a start message
 @bot.message_handler(commands=['start'])
@@ -35,12 +35,12 @@ def start(message):
                      reply_markup=user_markup)
 
 # more coins list
-@bot.message_handler(commands=['otherCoins'])
+@bot.message_handler(commands=['👉'])
 def other_coins(message):
     bot.send_message(message.from_user.id, 'Other Coins', reply_markup=user_markup2)
 
 # more coins list
-@bot.message_handler(commands=['mainCoins'])
+@bot.message_handler(commands=['👈'])
 def more_coins(message):
     bot.send_message(message.from_user.id, 'Main Coins', reply_markup=user_markup)
 
