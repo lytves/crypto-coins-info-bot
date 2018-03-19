@@ -1,6 +1,6 @@
 # CryptoCoinsInfoBot
 
-[@CryptoCoinsInfoBot](https://t.me/CryptoCoinsInfoBot "@CryptoCoinsInfoBot") - enjoy it!
+[@CryptoCoinsInfoBot](https://t.me/CryptoCoinsInfoBot "@CryptoCoinsInfoBot") - enjoy it! (now  bot is working on new version v2, see it [here](https://github.com/lytves/crypto-coins-info-bot-v2 "crypto-coins-info-bot-v2"))
 
 This is a simple version of a Telegram Bot, has been used [pyTelegramBotAPI Library ](https://github.com/eternnoir/pyTelegramBotAPI "pyTelegramBotAPI Library GitHub Repository") with using webhook updates method for recieve the messages.  
 
